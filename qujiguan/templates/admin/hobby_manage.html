@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兴趣分类管理 - 趣集馆后台</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2>兴趣分类管理</h2>
+            <a href=" " class="btn btn-primary">返回管理首页</a >
+        </div>
+
+        <!-- 新增/修改兴趣表单 -->
+        <div class="form-container">
+            <h3>{{ '修改兴趣分类' if request.args.get('edit_id') else '新增兴趣分类' }}</h3>
+            <form method="post">
+                <input type="hidden" name="id" value="{{ request.args.get('edit_id', '') }}">
+                <div class="form-group">
+                    <label for="title">标题：</label>
+                    <input type="text" id="title" name="title" required 
+                           value="{{ hobby[1] if request.args.get('edit_id') and hobby else '' }}">
+                </div>
+                <div class="form-group">
+                    <label for="desc">描述：</label>
+                    <textarea id="desc" name="desc" required>{{ hobby[2] if request.args.get('edit_id') and hobby else '' }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">提交</button>
+            </form>
+        </div>
+
+        <!-- 兴趣列表 -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hobby in hobbies %}
+                    <tr>
+                        <td>{{ hobby[0] }}</td>
+                        <td>{{ hobby[1] }}</td>
+                        <td>{{ hobby[2] }}</td>
+                        <td class="action-btn">
+                            <a href="/admin/hobby?edit_id={{ hobby[0] }}" class="btn btn-primary">修改</a >
+                            <a href="/admin/hobby/delete/{{ hobby[0] }}" class="btn btn-danger" onclick="return confirm('确定删除该兴趣分类？')">删除</a >
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 30px; color: var(--gray);">暂无兴趣分类数据</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
