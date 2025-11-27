@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兴趣分类 - 趣集馆</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="header">
+        <div class="container nav">
+            <div class="logo">
+                <div class="logo-icon">趣</div>趣集馆
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/">首页</a ></li>
+                <li class="nav-item"><a href="/hobby">兴趣分类</a ></li>
+                <li class="nav-item"><a href="/exhibition">展览</a ></li>
+                <li class="nav-item"><a href="#">关于我们</a ></li>
+            </ul>
+            <button class="btn btn-primary">加入我们</button>
+        </div>
+    </div>
+
+    <!-- 兴趣分类区 -->
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title">全部兴趣分类</h2>
+            <p class="section-desc">在这里，发现收藏的无限可能，找到属于你的热爱领域</p >
+            <div class="hobby-grid">
+                {% for hobby in hobbies %}
+                <div class="hobby-card">
+                    <div class="hobby-img">
+                        <img src="/static/images/hobby{{ hobby[0] }}.jpg" alt="{{ hobby[1] }}">
+                    </div>
+                    <div class="hobby-card-content">
+                        <h3 class="hobby-card-title">{{ hobby[1] }}</h3>
+                        <p class="hobby-card-desc">{{ hobby[2] }}</p >
+                    </div>
+                </div>
+                {% else %}
+                <div style="grid-column: 1/-1; text-align: center; padding: 50px; font-size: 18px; color: var(--gray);">
+                    暂无兴趣分类，敬请期待～
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">趣</div>趣集馆
+                    </div>
+                    <p class="footer-desc">收藏每一份热爱，连接每一位爱好者，打造专属的收藏文化交流平台</p >
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4 class="link-title">快速链接</h4>
+                        <ul class="link-list">
+                            <li><a href="/">首页</a ></li>
+                            <li><a href="/hobby">兴趣分类</a ></li>
+                            <li><a href="/exhibition">展览</a ></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4 class="link-title">关于我们</h4>
+                        <ul class="link-list">
+                            <li><a href="#">平台介绍</a ></li>
+                            <li><a href="#">联系我们</a ></li>
+                            <li><a href="#">加入团队</a ></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 趣集馆 - 收藏每一份热爱 版权所有</p >
+            </div>
+        </div>
+    </div>
+</body>
+</html>

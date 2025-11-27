@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>趣集馆 - 收藏每一份热爱</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="header">
+        <div class="container nav">
+            <div class="logo">
+                <div class="logo-icon">趣</div>趣集馆
+            </div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href=" ">首页</a ></li>
+                <li class="nav-item"><a href="/hobby">兴趣分类</a ></li>
+                <li class="nav-item"><a href="/exhibition">展览</a ></li>
+                <li class="nav-item"><a href="#">关于我们</a ></li>
+            </ul>
+            <button class="btn btn-primary">加入我们</button>
+        </div>
+    </div>
+
+    <!-- 英雄区 -->
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">收藏每一份热爱</h1>
+                <p class="hero-subtitle">汇聚手账、潮玩、文创等多元收藏兴趣，连接每一位爱好者，打造专属的收藏文化交流平台，让热爱不孤单。</p >
+                <div class="hero-btn-group">
+                    <a href="/hobby" class="btn btn-primary">探索兴趣</a >
+                    <a href="/exhibition" class="btn btn-secondary">查看展览</a >
+                </div>
+            </div>
+        </div>
+        <div class="hero-img">
+            <div class="img-placeholder">
+                <img src="/static/images/hero.jpg" alt="收藏主题图" style="width: 100%; height: 100%; border-radius: 16px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- 兴趣分类区 -->
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title">热门兴趣分类</h2>
+            <p class="section-desc">发现不同领域的收藏乐趣，找到志同道合的伙伴，开启你的收藏之旅</p >
+            <div class="hobby-grid">
+                {% for hobby in hobbies %}
+                <div class="hobby-card">
+                    <div class="hobby-img">
+                        <img src="/static/images/hobby{{ hobby[0] }}.jpg" alt="{{ hobby[1] }}">
+                    </div>
+                    <div class="hobby-card-content">
+                        <h3 class="hobby-card-title">{{ hobby[1] }}</h3>
+                        <p class="hobby-card-desc">{{ hobby[2] }}</p >
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- 展览区 -->
+    <div class="section exhibition">
+        <div class="container">
+            <div class="exhibition-container">
+                <div class="exhibition-img">
+                    <img src="/static/images/exhibition{{ exhibition[0] }}.jpg" alt="{{ exhibition[1] }}" style="width: 80%; height: 80%; object-fit: cover; border-radius: 16px;">
+                </div>
+                <div class="exhibition-content">
+                    <div class="exhibition-subtitle">最新展览</div>
+                    <h3 class="exhibition-title">{{ exhibition[1] }}</h3>
+                    <p class="exhibition-desc">{{ exhibition[2] }}</p >
+                    <ul class="exhibition-list">
+                        {% for item in exhibition[3].split(';') %}
+                        <li><span class="list-icon">✓</span>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="/exhibition" class="btn btn-primary">查看更多展览</a >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 贡献者区 -->
+    <div class="section contributor">
+        <div class="container">
+            <h2 class="section-title">收藏达人</h2>
+            <p class="section-desc">他们用热爱诠释收藏的意义，用坚持书写收藏的故事</p >
+            <div class="contributor-grid">
+                <div class="contributor-card">
+                    <div class="contributor-avatar">达</div>
+                    <h3 class="contributor-name">李邦睿</h3>
+                    <p class="contributor-hobby">运动达人</p >
+                    <p class="contributor-desc">运动是他的生活底色，跑步、骑行、球类样样精通，心率表是随身标配，赛道和球场都是他的主场，永远保持着“随时能上场”的热血状态。</p >
+                </div>
+                <div class="contributor-card">
+                    <div class="contributor-avatar">人</div>
+                    <h3 class="contributor-name">何领</h3>
+                    <p class="contributor-hobby">潮玩盲盒收藏家</p >
+                    <p class="contributor-desc">专注潮玩收藏3年，集齐多个热门IP全套盲盒，致力于分享潮玩背后的设计故事。</p >
+                </div>
+                <div class="contributor-card">
+                    <div class="contributor-avatar">推</div>
+                    <h3 class="contributor-name">李登业</h3>
+                    <p class="contributor-hobby">文创收藏爱好者</p >
+                    <p class="contributor-desc">偏爱博物馆文创产品，收藏涵盖国内外20+博物馆周边，传递文创背后的文化价值。</p >
+                </div>
+                <div class="contributor-card">
+                    <div class="contributor-avatar">荐</div>
+                    <h3 class="contributor-name">李洪严</h3>
+                    <p class="contributor-hobby">健身狂魔</p >
+                    <p class="contributor-desc">健身房是他的第二战场，闹钟永远比朝阳早，哑铃重量只增不减，汗水浸透衣背是日常标配，肌肉线条是最骄傲的勋章。</p >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加入区 -->
+    <div class="join">
+        <div class="container">
+            <h2 class="join-title">加入我们，分享你的热爱</h2>
+            <p class="join-desc">无论你是收藏新手还是资深达人，这里都有属于你的位置。分享你的收藏故事，结识志同道合的伙伴，一起探索收藏的无限可能。</p >
+            <button class="btn btn-light">立即加入</button>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">趣</div>趣集馆
+                    </div>
+                    <p class="footer-desc">收藏每一份热爱，连接每一位爱好者，打造专属的收藏文化交流平台</p >
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4 class="link-title">快速链接</h4>
+                        <ul class="link-list">
+                            <li><a href="/">首页</a ></li>
+                            <li><a href="/hobby">兴趣分类</a ></li>
+                            <li><a href="/exhibition">展览</a ></li>
+                            <li><a href="#">关于我们</a ></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4 class="link-title">联系我们</h4>
+                        <ul class="link-list">
+                            <li><a href="#">邮箱：contact@qujiguan.com</a ></li>
+                            <li><a href="#">微信：qujiguan2025</a ></li>
+                            <li><a href="#">地址：滇西科技师范学院</a ></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 趣集馆 - 收藏每一份热爱 版权所有</p >
+            </div>
+        </div>
+    </div>
+</body>
+</html>
